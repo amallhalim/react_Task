@@ -14,19 +14,38 @@ export default function Approuter() {
     <Routes>
       <Route element={<LayoutWithNav />}>
         <Route
-          path="/"
+          path="/Home"
           element={
             <Suspense fallback={<h1>Loading ...</h1>}>
               <Home />
             </Suspense>
           }
         />
-
-        <Route path="/Register" element={<Register />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/Register"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <Register />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <Login />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/*"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <Notfound />
+            </Suspense>
+          }
+        />
       </Route>
-      {/* <Route path="*" element={<Notfound />} /> */}
     </Routes>
   );
 }

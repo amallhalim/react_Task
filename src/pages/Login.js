@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Apis/fireBaseConfigs";
-
-// font awesome
+import style from "./../index.module.css";
+// font awesom
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -24,8 +24,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-
-  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(prevState => !prevState);
@@ -90,7 +88,7 @@ const Login = () => {
                 Email <span>*</span>
               </label>
               <Field
-                className="form-control "
+                className={`form-control ${style.input}`}
                 name="email"
                 type="email"
                 id="email"
@@ -104,7 +102,7 @@ const Login = () => {
               <label className="mb-1" htmlFor="password">
                 Password <span>*</span>
               </label>
-              <div>
+              <div className={style.passwordInputWrapper}>
                 <Field
                   className="form-control container"
                   name="password"
@@ -113,7 +111,7 @@ const Login = () => {
                   placeholder="Please enter a strong password"
                 />
                 <span
-                  // className={styles.togglePasswordVisibilityButton}
+                  className={style.togglePasswordVisibilityButton}
                   onClick={togglePasswordVisibility}
                 >
                   {showPassword ? (
