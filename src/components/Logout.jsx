@@ -24,18 +24,18 @@ const signOutFunc = async () => {
       navigate("/Register", { replace: true });
       alert(" you are Sign-out correctly");
     } catch (error) {
-      console.log("Sign-out An error happened..");
+      // console.log("Sign-out An error happened..");
+      alert("Sign-out An error happened.");
     }
   } 
   
 }
 
   return (
-      <>
-          <button onClick={signOutFunc} className="btn btn-danger">
-            Logout
-          </button>
-      </>
-    
+    <>
+      <button onClick={signOutFunc} className="btn btn-danger">
+        Logout
+      </button>
+    </>
   );
 }
