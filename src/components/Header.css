@@ -1,0 +1,9 @@
+.w-100-md-lg {
+  width: 100%;
+  @media (min-width: 768) {
+    width: 80%;
+  }
+  @media (min-width: 1140) {
+    width: 80%;
+  }
+}
