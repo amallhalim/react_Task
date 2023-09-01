@@ -52,7 +52,7 @@ const Register = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched, isValid }) => (
-          <Form className="container w-50">
+          <Form className={`${style.container} `}>
             {errorMsg && (
               <div className="alert alert-danger" role="alert">
                 {errorMsg}
@@ -83,7 +83,7 @@ const Register = () => {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   id="password"
-                  placeholder="Please enter a strong password"
+                  placeholder="Please enter a password"
                 />
                 <span
                   className={style.togglePasswordVisibilityButton}

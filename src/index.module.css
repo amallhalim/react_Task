@@ -63,4 +63,19 @@ position: absolute;}
   transform: translateY(-50%);
   cursor: pointer;
 }
-/* end shared style in login and register */
+
+
+/* Default width */
+.container {
+  width: 50%;
+          padding: 10 px;
+          margin: auto;
+}
+/* Width for small screens */
+@media (max-width: 767px) {
+  .container {
+    width:80%;
+          margin: auto;
+
+  }
+}
