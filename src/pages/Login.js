@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Formik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
@@ -12,10 +12,9 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loginPassword, setLoginPassword] = useState("");
-  const [Token, setToken] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
@@ -38,11 +37,12 @@ const Login = () => {
         loginPassword
       ).then(userCredential => {
         // Signed in
-        const token = userCredential.user.accessToken;
-        setToken(token);
+        const Token = userCredential.user.accessToken;
+        // setToken(token);
         localStorage.setItem("Token", Token);
         setSuccessMsg("you are now log in");
         setErrorMsg("");
+        setIsLoggedIn(true);
       });
       // console.log("result", result);
     } catch (error) {
@@ -53,6 +53,8 @@ const Login = () => {
 
   return (
     <>
+      <h2 className="text-center fw-bold">Login</h2>
+
       <Formik
         initialValues={{ ...user }}
         validationSchema={Yup.object({

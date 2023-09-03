@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import * as Yup from "yup";
 import { auth } from "../Apis/fireBaseConfigs";
-import style from "./../index.module.css";
+
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import style from "./../index.module.css";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -48,6 +49,8 @@ const Register = () => {
 
   return (
     <>
+      {" "}
+      <h2 className="text-center fw-bold">Register</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -106,7 +109,7 @@ const Register = () => {
               <button
                 disabled={!isValid}
                 type="submit"
-                className="btn bg-primary"
+                className="btn bg-primary text-light px-3"
               >
                 Register
               </button>
