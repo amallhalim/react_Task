@@ -33,7 +33,7 @@ const Register = () => {
     password: Yup.string().required("Password is required"),
   });
 
-  const handleSubmit = async values => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     const { email, password } = values;
 
     try {
@@ -41,6 +41,8 @@ const Register = () => {
       navigate("/login");
     } catch (error) {
       setErrorMsg(error?.code);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -52,7 +54,7 @@ const Register = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched, isValid }) => (
-          <Form className={`${style.container} `}>
+          <Form className={`${style.responsivecontainer} `}>
             {errorMsg && (
               <div className="alert alert-danger" role="alert">
                 {errorMsg}

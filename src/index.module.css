@@ -66,14 +66,13 @@ position: absolute;}
 
 
 /* Default width */
-.container {
-  width: 50%;
-          padding: 10 px;
-          margin: auto;
+.responsivecontainer {
+  width: 40%;
+  margin: 10px auto;
 }
 /* Width for small screens */
 @media (max-width: 767px) {
-  .container {
+  .responsivecontainer {
     width:80%;
           margin: auto;
 

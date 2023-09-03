@@ -70,9 +70,14 @@ const Login = () => {
           loginFunc(values);
           setUser(values.email, values.password);
         }}
+        validateOnSubmit={true}
+        initialTouched={{ email: true }}
       >
         {({ errors, touched, isValid }) => (
-          <Form className={` ${style.container}  `}>
+          <Form
+            className={` ${style.responsivecontainer}
+            `}
+          >
             {errorMsg ? (
               <div className="alert alert-danger" role="alert">
                 {errorMsg}
