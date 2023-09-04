@@ -52,15 +52,15 @@ export default function Approuter() {
             </Suspense>
           }
         />
-        <Route
-          path="/*"
-          element={
-            <Suspense fallback={<h1>Loading ...</h1>}>
-              <Notfound />
-            </Suspense>
-          }
-        />
       </Route>
+      <Route
+        path="/*"
+        element={
+          <Suspense fallback={<h1>Loading ...</h1>}>
+            <Notfound />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 }
