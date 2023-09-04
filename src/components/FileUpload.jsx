@@ -30,11 +30,9 @@ const FileUpload = () => {
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
           setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
-          if (progress == 100) {
+          if (progress === 100) {
             setapearprogressBar(false);
-            // console.log("done");
           }
-          // console.log("progress", progress);
           // eslint-disable-next-line default-case
           switch (snapshot.state) {
             case "paused":
@@ -79,19 +77,23 @@ const FileUpload = () => {
     <>
       <div className="container bg-dark rounded py-4 ">
         <form>
-          {progress == 100 ? (
+          {progress === 100 ? (
             <div className="alert alert-primary  " role="alert">
               img upload correctly
             </div>
           ) : null}
-          <img
-            src={file && imgPreview ? imgPreview : img}
-            alt={file?.name}
-            width={"100%"}
+          <div
+            className="w-100 d-flex justify-content-center align-items-center"
             height={"200px"}
-            className=" pt-3 form-group preview rounded "
-          />
-
+          >
+            <img
+              src={file && imgPreview ? imgPreview : img}
+              alt={file?.name}
+              width={"100%"}
+              height={"200px"}
+              className=" pt-3 form-group preview rounded "
+            />
+          </div>
           <div className="form-group  mt-2" width={"400px"}>
             <input
               type="file"
@@ -118,7 +120,7 @@ const FileUpload = () => {
                   width: `${progress}%`,
                 }}
               >
-                {progress == 100 ? "done" : progress}
+                {progress === 100 ? "done" : progress}
               </div>
             </div>
           ) : null}

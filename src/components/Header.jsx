@@ -25,14 +25,14 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
   return (
     <div className="header bg-danger fixed-top">
       <nav className=" navbar navbar-dark bg-dark ">
-        <li className="nav-item ms-2 ">
+        <li className="nav-item  ms-2 fst-italic fw-bolder">
           <NavLink
-            className=" nav-link  me-2 ms-0 pb-2 pt-0 mt-0"
+            className=" nav-link  me-2 ms-0 pb-2 pt-0 fs-4 mt-0"
             style={{ color: "#d0d7e1" }}
             to={isLoggedIn ? "/Home" : "/Login"}
           >
             {" "}
-            register system
+            Home
           </NavLink>
         </li>
         <ul className="navbar-nav  mt-2 mt-lg-0 d-flex justify-content-spaceBetween px-2  flex-row ">

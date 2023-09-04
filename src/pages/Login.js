@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
 import { Formik, Form, Field } from "formik";
-import { Link } from "react-router-dom";
 
 import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -44,7 +42,7 @@ const Login = ({ setIsLoggedIn }) => {
         setErrorMsg("");
         setIsLoggedIn(true);
       });
-      // console.log("result", result);
+      console.log("result", result);
     } catch (error) {
       setErrorMsg(error.code);
       // alert(error?.code);

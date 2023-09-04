@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
 import { auth } from "../Apis/fireBaseConfigs";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 export default function Logout({ onLogout }) {
   const navigate = useNavigate();
