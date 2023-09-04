@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Apis/fireBaseConfigs";
 
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +13,7 @@ import style from "./../index.module.css";
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {

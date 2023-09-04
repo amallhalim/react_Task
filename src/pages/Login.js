@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
+
 import { Formik, Form, Field } from "formik";
 
 import * as Yup from "yup";
@@ -12,40 +14,42 @@ import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = ({ setIsLoggedIn }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [loginPassword, setLoginPassword] = useState("");
+
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const [loginEmail, setLoginEmail] = useState("");
-  const [user, setUser] = useState({
+  const initialValues = {
     email: "",
     password: "",
-  });
+  };
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(prevState => !prevState);
   };
-
-  // Sign in existing users
-  const loginFunc = async values => {
+  const handleSubmit = async (values, { setSubmitting }) => {
+    const { email, password } = values;
+    // Sign in existing users
+    // const loginFunc = async values => {
     try {
-      const result = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      ).then(userCredential => {
-        // Signed in
-        const Token = userCredential.user.accessToken;
-        // setToken(token);
-        localStorage.setItem("Token", Token);
-        setSuccessMsg("you are now log in");
-        setErrorMsg("");
-        setIsLoggedIn(true);
-      });
-      console.log("result", result);
+      await signInWithEmailAndPassword(auth, email, password).then(
+        userCredential => {
+          // Signed in
+          const Token = userCredential.user.accessToken;
+          localStorage.setItem("Token", Token);
+          setSuccessMsg("you are now log in");
+          setErrorMsg("");
+          setIsLoggedIn(true);
+
+          //after login sucess navigate to home page
+          navigate("/Home", { replace: true });
+        }
+      );
     } catch (error) {
       setErrorMsg(error.code);
       // alert(error?.code);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -54,7 +58,7 @@ const Login = ({ setIsLoggedIn }) => {
       <h2 className="text-center fw-bold">Login</h2>
 
       <Formik
-        initialValues={{ ...user }}
+        initialValues={initialValues}
         validationSchema={Yup.object({
           email: Yup.string()
             .required("Email is required")
@@ -64,12 +68,7 @@ const Login = ({ setIsLoggedIn }) => {
             ),
           password: Yup.string().required("Password is required"),
         })}
-        onSubmit={values => {
-          setLoginPassword(values.password);
-          setLoginEmail(values.email);
-          loginFunc(values);
-          setUser(values.email, values.password);
-        }}
+        onSubmit={handleSubmit}
         validateOnSubmit={true}
         initialTouched={{ email: true }}
       >
